@@ -1,14 +1,20 @@
-# EPICS PVA Gateway / Proxy `p2p`
+# EPICS PVA Gateway / Proxy `p2p` (deprecated!)
 
-`p2p` is for PVA what `gateway` is for CA:
+*`p2p` was supposed to be for PVA what `gateway` is for CA.*
 
-| *Comparison*       | PVA         | CA             |
-|--------------------|-------------|----------------|
-| Executable         | `p2p`       | `gateway`      |
-| Module / Extension | [pva2pva][] | [ca-gateway][] |
+As indicated in the table below, **p2p is deprecated**. Please use p4p's **pvagw** instead.
 
-**Note**: There's also a PVA gateway from the Python package [p4p][] called [pvagw][]
-which seems [quite a bit more in development](https://github.com/mdavidsaver/p4p/commits/master/src/p4p/gw.py).
+| *Comparison*       | CA Gateway     | p4p pvagw       | **pva2pva p2p** |
+|--------------------|----------------|-----------------|-----------------|
+| Target Protocol    | CA             | PVA             | PVA             |
+| Executable         | `gateway`      | `pvagw`         | `p2p`           |
+| Module / Extension | [ca-gateway][] | [pva2pva][]     | [p4p][]         |
+| Dev Activity       | [🔗][dev cagw] | [🔗][dev pvagw] | [🔗][dev p2p]   |
+| Status             | production     | production      | **deprecated**  |
+
+The target protocol indicates:
+* the [PV Access protocol][] in the case of *PVA* and
+* the [Channel Access protocol][] in the case of *CA*.
 
 ## Synopsis
 
@@ -23,6 +29,20 @@ Usage: p2p [-vhiIC] <config file>
 * `-I`: interactive yes
 * `-C`: check only
 * `-q`: quiet (found in [src][]
+
+**Deprecation Notice**
+
+When you start the application with an actual config file, you'll get the following notice:
+
+```
+Notice: This p2p gateway prototype has been superceded by the p4p.gw gateway
+        which has exciting new features including granular access control,
+        and status PVs including bandwidth usage reports.
+        p2p is considered deprecated by its author, and will receive
+        minimal maintainance effort going forward.
+        Users are encouraged to migrate to p4p.gw.
+        https://mdavidsaver.github.io/p4p/gw.html
+```
 
 ## Example
 
@@ -60,5 +80,11 @@ This is the loopback example mentioned in the [pva2pva README][]:
 [pva2pva]: https://github.com/epics-base/pva2pva
 [ca-gateway]: https://github.com/epics-extensions/ca-gateway
 [pva2pva README]: https://github.com/epics-base/pva2pva#running-p2p
-[pvagw]: https://mdavidsaver.github.io/p4p/gw.html
 [src]: https://github.com/epics-base/pva2pva/blob/master/p2pApp/gwmain.cpp#L68
+[p4p]: https://github.com/mdavidsaver/p4p
+[pvagw]: https://mdavidsaver.github.io/p4p/gw.html
+[PV Access protocol]: https://github.com/epics-base/pvAccessCPP/wiki/protocol
+[Channel Access protocol]: https://docs.epics-controls.org/en/latest/specs/ca_protocol.html
+[dev cagw]: https://github.com/epics-extensions/ca-gateway/commits/master
+[dev pvagw]: https://github.com/mdavidsaver/p4p/commits/master/src/p4p/gw.py
+[dev p2p]: https://github.com/epics-base/pva2pva/commits/master/p2pApp
