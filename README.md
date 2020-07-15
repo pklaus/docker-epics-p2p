@@ -16,6 +16,9 @@ The target protocol indicates:
 * the [PV Access protocol][] in the case of *PVA* and
 * the [Channel Access protocol][] in the case of *CA*.
 
+Pre-built multi-arch images can be found on the Docker Hub:
+<https://hub.docker.com/r/pklaus/p2p>
+
 ## Synopsis
 
 ```
