@@ -36,3 +36,4 @@ ENV PATH=/
 WORKDIR /epics
 
 ENTRYPOINT ["/epics/p2p"]
+CMD ["-h"]
