@@ -28,6 +28,7 @@ FROM scratch AS final
 USER scs
 
 COPY --from=dockerizer /p2p_root /
+ADD loopback.json /epics/
 
 ENV EPICS_CA_AUTO_ADDR_LIST=NO
 
